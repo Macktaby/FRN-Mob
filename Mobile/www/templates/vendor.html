@@ -1,0 +1,24 @@
+<ion-view view-title="">
+  <ion-content class="vendor">
+    <div cg-busy="vendorPromise" class="vendor-banner">
+      <ng-image source="{{data.vendor.featured_image_thumbnail_url}}" class="vendor-logo"></ng-image>
+      <div class="vendor-info-area">
+        <h3>{{data.vendor.post_title}}</h3>
+        <p>{{data.vendor.description}}</p>
+      </div>
+      <br style="clear: both;" />
+    </div>
+    <div cg-busy="showroomsPromise">
+      <ion-list can-swipe="true">
+        <ion-item ng-repeat="s in data.showrooms" class="item item-icon-right" ng-click="openShowroom(s)">
+          <h2>{{s.post_title}}</h2>
+          <p>{{s.address}}</p>
+          <i class="icon ion-chevron-right"></i>
+          <ion-option-button class="button ion-ios-location-outline"ng-click="goToLocation(s)"></ion-option-button>
+          <ion-option-button class="button ion-ios-telephone-outline" ng-click="call(s)"></ion-option-button>
+          <ion-option-button class="button ion-ios-email-outline" ng-click="email(s)"></ion-option-button>      
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

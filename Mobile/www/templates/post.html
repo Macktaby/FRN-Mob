@@ -1,0 +1,9 @@
+<ion-view view-title="">
+  <ion-content>
+    <h1>{{post.title.rendered}}</h1>
+    <p>{{post.acf.email}}</p>
+    <p>{{post.acf.phone}}</p>
+    <p>{{post.acf.website}}</p>
+    <div ng-bind-html="post.content.rendered"></div>
+  </ion-content>
+</ion-view>

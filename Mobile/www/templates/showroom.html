@@ -1,0 +1,25 @@
+<ion-view view-title="">
+<ion-content class="showroom">
+  <div class="list filters-area">
+    <div class="sort-holder">
+      <a class="opener"><span>Brands</span></a>
+      <ul class="slide">
+        <li class="item"><a ng-click="setBrandFilter('!!')">All</a></li>
+        <li class="item" ng-repeat="v in data.brands"><a ng-click="setBrandFilter(v.ID)">{{v.post_title}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div cg-busy="showroomPromise" id="productsArea">
+    <div class="list product-item-container" collection-repeat="p in data.products | filter:{brandID:brandFilter}" item-width="50%" item-height="214px" ng-click="openProduct(p)">
+      <div class="product-item">
+        <iid-favorite item-id="{{p.id}}" ng-show="loggedIn"></iid-favorite>
+        <ng-image source="{{p.thumbnail}}" class="full-image"></ng-image>
+        <div class="iid-item-data">
+            <div class="iid-item-data-title">{{p.post_title}}</div>
+            <div class="iid-item-data-desc">{{p.brand[0].post_title}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+</ion-view>

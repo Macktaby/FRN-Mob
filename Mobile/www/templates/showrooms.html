@@ -1,0 +1,21 @@
+<ion-view view-title="">
+  <ion-content class="vendor">
+    <div>
+      <label class="item item-input">
+        <input type="text" placeholder="Filter" ng-model="searchFilter">
+      </label>
+    </div>
+    <div cg-busy="showroomsPromise">
+      <ion-list can-swipe="true">
+        <ion-item ng-repeat="s in data.showrooms | filter:{post_title:searchFilter}" class="item item-icon-right" ng-click="openShowroom(s)">
+          <h2>{{s.post_title}}</h2>
+          <p>{{s.address}}</p>
+          <i class="icon ion-chevron-right"></i>
+          <ion-option-button class="button ion-ios-location-outline"ng-click="goToLocation(s)"></ion-option-button>
+          <ion-option-button class="button ion-ios-telephone-outline" ng-click="call(s)"></ion-option-button>
+          <ion-option-button class="button ion-ios-email-outline" ng-click="email(s)"></ion-option-button>      
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

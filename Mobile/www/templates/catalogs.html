@@ -1,0 +1,20 @@
+<ion-view view-title="">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Filter" ng-model="searchFilter">
+      </label>
+    </div>
+    <div cg-busy="catalogsPromise">
+      <div class="item iid-item-container" collection-repeat="v in data.catalogs | filter:searchFilter" item-width="100%" item-height="264px" ng-click="goToDetails(v)"> 
+        <div class="iid-item">
+          <ng-image source="{{v.thumbnail}}"></ng-image>
+          <div class="iid-item-data">
+            <div class="iid-item-data-title">{{v.post_title}} ({{v.month}} - {{v.year}})</div>
+            <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

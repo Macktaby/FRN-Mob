@@ -1,0 +1,18 @@
+<ion-view view-title="">
+  <ion-content>
+    <div>
+      <ion-slide-box does-continue="true" auto-play="true" pager-click="pagerClick(index)">
+        <ion-slide ng-repeat="photo in data.envouge.gallery">
+          <div class="house-gallery">
+            <ng-image source="{{ photo.url }}" />
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+      <div class="padded-div">
+        <h2>{{data.envouge.post_title}}</h2>
+        <div>{{data.envouge.description}}</div>
+      </div>
+      <button class="button button-block button-positive" ng-click="share()">Share</button>
+    </div>
+  </ion-content>
+</ion-view>

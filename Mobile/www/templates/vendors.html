@@ -1,0 +1,20 @@
+<ion-view view-title="">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Filter" ng-model="searchFilter">
+      </label>
+    </div>
+    <div cg-busy="vendorsPromise">
+      <div class="item product-item-container" collection-repeat="v in data.vendors | filter:{post_title:searchFilter}" item-width="50%" item-height="214px" ng-click="goToDetails(v)"> 
+        <div class="product-item">
+          <ng-image source="{{v.featured_image_thumbnail_url}}"></ng-image>
+          <div class="iid-item-data">
+            <div class="iid-item-data-title">{{v.post_title}}</div>
+            <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

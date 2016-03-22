@@ -1,0 +1,20 @@
+<ion-view view-title="">
+  <ion-content class="designer">
+    <div>
+      <ion-slide-box does-continue="true" auto-play="true" pager-click="pagerClick(index)">
+        <ion-slide ng-repeat="photo in data.designer.gallery">
+          <ng-image source="{{ photo.url }}" />
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+    <div class="padded-div">
+      <h2>{{data.designer.post_title}}</h2>
+      <div class="list">
+        <a class="item item-icon-left" ng-click="callPhone()"><i class="icon ion-ios-telephone" /></i>{{data.designer.phone}}</a>
+        <a class="item item-icon-left" ng-click="sendEmail()"><i class="icon ion-ios-email" /></i>{{data.designer.email}}</a>
+        <a class="item item-icon-left" ng-click="goToWebsite()"><i class="icon ion-link"></i>{{data.designer.website}}</a>
+        <a ng-show="loggedIn" class="item item-icon-left" ng-click="contact()"><i class="icon ion-ios-email"></i>Contact Designer</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
