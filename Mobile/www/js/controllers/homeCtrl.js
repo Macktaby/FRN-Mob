@@ -1,8 +1,10 @@
-angular.module('imageID.controllers').controller('HomeCtrl', function($scope, $timeout, $state, $log, Restangular, MemoryService, $rootScope, $ionicSlideBoxDelegate) {
+angular.module('imageID.controllers').controller('HomeCtrl', function($scope, $timeout, $state, $log, Restangular, MemoryService, $rootScope, $ionicSlideBoxDelegate, $ionicHistory) {
 	$scope.data = {};
 	$scope.data.ads = [];
 	$scope.data.featured = [];
-	
+
+	$ionicHistory.clearHistory();
+
 	$scope.adsPromise = Restangular.all('type/ad').getList().then(function(posts) {
         if(posts.length > 2){
             $scope.data.ads = [ posts[0], posts[1] ];
@@ -12,10 +14,10 @@ angular.module('imageID.controllers').controller('HomeCtrl', function($scope, $t
 	}).catch(function(err) {
 		$scope.data.ads = [];
 	});
-	
+
 	$scope.featuredPromise = Restangular.all('homepage').getList().then(function(posts) {
 		$scope.data.featured = posts;
-        
+
         $timeout(function() {
         	$scope.$apply();
 			$ionicSlideBoxDelegate.update();
@@ -23,8 +25,8 @@ angular.module('imageID.controllers').controller('HomeCtrl', function($scope, $t
 	}).catch(function(err) {
 		$scope.data.featured = [];
 	});
-	
-	
+
+
 	$scope.openDetails = function(v){
 		// Promotable types:
 		// 'designer', 'vendor', 'showroom', 'catalog', 'product', 'house'
@@ -48,7 +50,7 @@ angular.module('imageID.controllers').controller('HomeCtrl', function($scope, $t
 			$state.go("app.product", { "id" : v.id });
 		}
 	}
-	
+
 	$scope.openAd = function(ad){
 		window.open(ad.url, "_system");
 	}

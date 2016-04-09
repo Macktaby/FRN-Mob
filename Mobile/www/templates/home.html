@@ -1,10 +1,10 @@
-<ion-view view-title="">
+<ion-view view-title="" can-swipe-back="false">
   <ion-content>
     <div class="home-adv-title">Sponsers</div>
     <div class="row home-adv-bar"  cg-busy="adsPromise">
       <div class="col" ng-repeat="ad in data.ads" ng-click="openAd(ad)"><ng-image source="{{ad.thumbnail}}" class="home-adv"></div>
     </div>
-    
+
     <div cg-busy="featuredPromise">
       <!--Products-->
       <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
@@ -21,7 +21,7 @@
             </div>
         </ion-slide>
       </ion-slide-box>
-      
+
       <!--Designers-->
       <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
         <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'designer'}">
@@ -36,7 +36,7 @@
             </div>
         </ion-slide>
       </ion-slide-box>
-      
+
       <!--showroom-->
       <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
         <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'showroom'}">
@@ -51,7 +51,7 @@
             </div>
         </ion-slide>
       </ion-slide-box>
-      
+
       <!--catalog-->
       <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
         <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'catalog'}">
@@ -66,7 +66,7 @@
             </div>
         </ion-slide>
       </ion-slide-box>
-      
+
       <!--house-->
       <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
         <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'house'}">
@@ -81,7 +81,7 @@
             </div>
         </ion-slide>
       </ion-slide-box>
-      
+
     </div>
   </ion-content>
 </ion-view>
