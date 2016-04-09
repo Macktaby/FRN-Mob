@@ -9355,3 +9355,11 @@ a.button {
 
 .designer img {
   max-height: 400px; }
+
+.signup_form {
+  padding: 10px; }
+
+.signup_form .error {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #ff0000; }

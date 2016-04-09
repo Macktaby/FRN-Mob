@@ -20,7 +20,7 @@ $darkText:						  #050505 !default;
 
 .button-clear, .bar.bar-header {
   max-height: 70px !important;
-} 
+}
 
 /* IOS fixes */
 .platform-ios .has-header {
@@ -29,7 +29,7 @@ $darkText:						  #050505 !default;
 
 .platform-ios .bar.bar-positive, .platform-ios .bar.bar-header {
   height: 84px !important;
-} 
+}
 
 .platform-ios .bar .title {
   height: 83px !important;
@@ -38,7 +38,7 @@ $darkText:						  #050505 !default;
 
 .platform-ios .button-clear, .platform-ios .bar.bar-header {
   max-height: 84px !important;
-} 
+}
 
 .title.title-center.header-item{
   background-image: url(../img/logo.png);
@@ -54,7 +54,7 @@ $darkText:						  #050505 !default;
 .item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
   background-color: rgba(0,0,0,0);
 }
- 
+
 /*Home elements*/
 .home-adv-title{
   width: 100%;
@@ -129,7 +129,7 @@ $darkText:						  #050505 !default;
 .product-item img {
   height: 150px;
   width: 100%;
-} 
+}
 
 .product-item .iid-item-data {
   margin-left: 0;
@@ -205,10 +205,10 @@ $darkText:						  #050505 !default;
 
 .product-gallery-img {
   height: 100%;
-} 
+}
 
 .house-gallery img {
-  width: 100%; 
+  width: 100%;
   height: 100%;
 }
 
@@ -229,7 +229,7 @@ $darkText:						  #050505 !default;
    height: 20px;
    display: inline;
 }
- 
+
 .sort-holder.active .opener:after {
 	display: block;
 }
@@ -325,7 +325,7 @@ $darkText:						  #050505 !default;
 .ionic_ratings .icon {
     font-size: 40px;
 }
-  
+
 .profile-product-item {
     height: 214px;
     width: 50%;
@@ -334,4 +334,14 @@ $darkText:						  #050505 !default;
 
 .designer img {
     max-height: 400px;
+}
+
+.signup_form {
+    padding: 10px;
+}
+
+.signup_form .error {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #ff0000;
 }
