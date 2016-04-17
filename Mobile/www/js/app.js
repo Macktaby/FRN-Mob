@@ -4,7 +4,7 @@
 // 'imageID' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'imageID.controllers' is found in controllers.js
-angular.module('imageID', ['ionic', 'imageID.controllers', 'imageID.utils', 'imageID.services', 'cgBusy', 'imageID.directives', 'imageID.factories', 'restangular', 'ngCordova', 'ionic-ratings'])
+angular.module('imageID', ['ionic', 'imageID.controllers', 'imageID.utils', 'imageID.services', 'cgBusy', 'imageID.directives', 'imageID.factories', 'restangular', 'ngCordova', 'ionic-ratings', 'ngCordovaOauth'])
 
 .run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
@@ -40,6 +40,7 @@ angular.module('imageID', ['ionic', 'imageID.controllers', 'imageID.utils', 'ima
 // .constant('WORDPRESS_API_URL', 'http://mounir.io/imageid1/api/')
 // .constant('WORDPRESS_REST_BASE_URL', 'http://mounir.io/imageid1/wp-json/wp/v2/imageid')
 .constant('GCM_SENDER_ID', '758446630149')
+.constant('FACEBOOK_CLIENT_ID', '1060048270702910')
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider, $ionicConfigProvider, $sceDelegateProvider, $compileProvider, WORDPRESS_REST_BASE_URL) {
   $ionicConfigProvider.backButton.text('').previousTitleText(false);
   $ionicConfigProvider.tabs.style("standard");

@@ -1,5 +1,5 @@
 angular.module('imageID.controllers', [])
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, AuthService, $state, $ionicLoading, Restangular, PushNotificationsService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, AuthService, $state, $ionicLoading, Restangular, PushNotificationsService, $cordovaOauth, FACEBOOK_CLIENT_ID) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -28,6 +28,14 @@ angular.module('imageID.controllers', [])
   $scope.login = function() {
     $scope.modal.show();
   };
+  
+  $scope.facebookLogin = function(){
+    $cordovaOauth.facebook(FACEBOOK_CLIENT_ID, ["email"]).then(function(result) {
+        console.log("Response Object -> " + JSON.stringify(result));
+    }, function(error) {
+        console.log("Error -> " + error);
+    });
+  }
   
   $scope.logout = function() {
     AuthService.logOut();

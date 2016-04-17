@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "ngCordova": "~0.1.23-alpha",
-    "ionic-ratings": "~0.2.0"
+    "ionic-ratings": "~0.2.0",
+    "ng-cordova-oauth": "^0.2.5"
   }
 }
