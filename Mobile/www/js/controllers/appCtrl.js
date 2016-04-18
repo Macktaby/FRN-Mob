@@ -29,14 +29,6 @@ angular.module('imageID.controllers', [])
     $scope.modal.show();
   };
   
-  $scope.facebookLogin = function(){
-    $cordovaOauth.facebook(FACEBOOK_CLIENT_ID, ["email"]).then(function(result) {
-        console.log("Response Object -> " + JSON.stringify(result));
-    }, function(error) {
-        console.log("Error -> " + error);
-    });
-  }
-  
   $scope.logout = function() {
     AuthService.logOut();
     $scope.loginData = {};
@@ -85,46 +77,79 @@ angular.module('imageID.controllers', [])
         "password" : $scope.loginData.password
       }));
       
-      var userID = AuthService.getUser().data.id;
-      Restangular.all("user/" + userID + "/actions").getList().then(function(actions) {
-        $scope.$root.favorties = [];
-        $scope.rates = [];
-        $scope.reserved = [];
-        
-        for(var i = 0; i < actions.length; i++){
-          var row = actions[i];
-          if(row.is_like == 1 && $scope.$root.favorties.indexOf(row.post_id) < 0){
-            $scope.$root.favorties.push(row.post_id);
-          }
-          if(row.rating != null){
-            $scope.rates.push({
-              "post_id" : row.post_id,
-              "rating" : row.rating
-            });
-          }
-          if(row.reseve != null){
-            $scope.reserved.push(row.post_id);
-          }
-        }
-        
-        $scope.$broadcast("profileUpdated", "");
-        //console.log("broadcast sent");
-        localStorage.setItem("favorties", JSON.stringify({
-            "favorties" : $scope.$root.favorties
-        }));
-      }).catch(function(err) {
-        $scope.$root.favorties = [];
-      });
-      
       $scope.loginData = {};
       
-      PushNotificationsService.register(userID);
+      $scope.getProfile();
     },function(err){
       $scope.loginData.error = err;
       $scope.loggedIn = true;
       $ionicLoading.hide();
     });
   };
+  
+  $scope.facebookLogin = function(){
+    $cordovaOauth.facebook(FACEBOOK_CLIENT_ID, ["email"]).then(function(result) {
+        //console.log("Response Object -> " + JSON.stringify(result));
+        $ionicLoading.show({
+          template: 'Loging in...'
+        });
+        AuthService.fbLogin(result.access_token)
+        .then(function(user){
+          $scope.closeLogin();
+          $ionicLoading.hide();
+          $scope.loggedIn = true;
+          
+          localStorage.setItem("user", JSON.stringify({
+            "access_token" : result.access_token
+          }));
+          
+          $scope.loginData = {};
+          
+          $scope.getProfile();
+        },function(err){
+          $scope.loginData.error = err;
+          $scope.loggedIn = true;
+          $ionicLoading.hide();
+        });
+    }, function(error) {
+        console.log("Error -> " + error);
+    });
+  };
+  
+  $scope.getProfile = function(){
+    var userID = AuthService.getUser().data.id;
+    Restangular.all("user/" + userID + "/actions").getList().then(function(actions) {
+      $scope.$root.favorties = [];
+      $scope.rates = [];
+      $scope.reserved = [];
+      
+      for(var i = 0; i < actions.length; i++){
+        var row = actions[i];
+        if(row.is_like == 1 && $scope.$root.favorties.indexOf(row.post_id) < 0){
+          $scope.$root.favorties.push(row.post_id);
+        }
+        if(row.rating != null){
+          $scope.rates.push({
+            "post_id" : row.post_id,
+            "rating" : row.rating
+          });
+        }
+        if(row.reseve != null){
+          $scope.reserved.push(row.post_id);
+        }
+      }
+      
+      $scope.$broadcast("profileUpdated", "");
+      //console.log("broadcast sent");
+      localStorage.setItem("favorties", JSON.stringify({
+          "favorties" : $scope.$root.favorties
+      }));
+    }).catch(function(err) {
+      $scope.$root.favorties = [];
+    });
+    
+    PushNotificationsService.register(userID);
+  }
   
   
   if(localStorage.getItem("user") != null){

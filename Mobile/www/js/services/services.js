@@ -421,6 +421,32 @@ angular.module('imageID.services')
     });
     return deferred.promise;
   };
+  
+  this.fbLogin = function(access_token) {
+    // http://inerdeg.com/imageID/api/user/fb_connect?access_token=CAAPEG7ieuT4BAEtwgyX39S6YbrLkX0cj8foU9q7dq39iWabavaXnNgbUdNqvCbDllxLjDAZCnkva08CfEbFeKSuZAEB8BLNbxvrxCq7xBHp6cnOOJ2YvEOyIBStu3TDMZBJvkj5RZC9qvtOnAQnzZAJkTayBUCp2TKSZBotSG4iTZBVyUMcAbAqqcjfrXhrhBQSJdhIbmmA9wZDZD&insecure=cool
+    var deferred = $q.defer(),
+        authService = this;
+    $http.jsonp(WORDPRESS_API_URL + 'user/fb_connect' + '?access_token='+ access_token + '&callback=JSON_CALLBACK&insecure=cool')
+    .success(function(data) {
+      //deferred.resolve(data);
+      var user = {
+        cookie: data.cookie,
+        data: data.user_login,
+        user_id: data.wp_user_id
+      };
+
+      authService.saveUser(user);
+
+      //getavatar in full size
+      authService.updateUserAvatar().then(function(){
+        deferred.resolve(user);
+      });
+    })
+    .error(function(data) {
+      deferred.reject(data);
+    });
+    return deferred.promise;
+  };
 
   this.doLogin = function(user) {
     var deferred = $q.defer(),
@@ -494,7 +520,7 @@ angular.module('imageID.services')
     $http.jsonp(WORDPRESS_API_URL + 'get_nonce/' +
     '?controller=' + controller +
     '&method=' + method +
-    '&callback=JSON_CALLBACK')
+    '&callback=JSON_CALLBACK&insecure=cool')
     .success(function(data) {
       deferred.resolve(data.nonce);
     })
@@ -508,7 +534,7 @@ angular.module('imageID.services')
     var deferred = $q.defer();
     $http.jsonp(WORDPRESS_API_URL + 'user/retrieve_password/' +
     '?user_login='+ username +
-    '&callback=JSON_CALLBACK')
+    '&callback=JSON_CALLBACK&insecure=cool')
     .success(function(data) {
       deferred.resolve(data);
     })
@@ -524,7 +550,7 @@ angular.module('imageID.services')
     '?username='+ username +
     '&password=' + password +
     '&nonce='+ nonce +
-    '&callback=JSON_CALLBACK')
+    '&callback=JSON_CALLBACK&insecure=cool')
     .success(function(data) {
       deferred.resolve(data);
     })
@@ -558,7 +584,7 @@ angular.module('imageID.services')
     '&display_name='+ displayName +
     '&user_pass=' + password +
     '&nonce='+ nonce +
-    '&callback=JSON_CALLBACK')
+    '&callback=JSON_CALLBACK&insecure=cool')
     .success(function(data) {
       deferred.resolve(data);
     })
@@ -602,11 +628,15 @@ angular.module('imageID.services')
     $http.jsonp(WORDPRESS_API_URL + 'user/get_avatar/' +
     '?user_id='+ user.user_id +
     '&type=full' +
-    '&callback=JSON_CALLBACK')
+    '&callback=JSON_CALLBACK&insecure=cool')
     .success(function(data) {
 
-      var avatar_aux = data.avatar.replace("http:", "");
-      var avatar = 'http:' + avatar_aux;
+      var avatar = WORDPRESS_API_URL + '../wp-content/plugins/iid-plugin/logo.png';
+
+      if (data.avatar != null){
+        var avatar_aux = data.avatar.replace("http:", "");
+        var avatar = 'http:' + avatar_aux;
+      }
 
       window.localStorage.ionWordpress_user_avatar =  JSON.stringify(avatar);
 
