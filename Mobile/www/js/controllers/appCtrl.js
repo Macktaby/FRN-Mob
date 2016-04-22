@@ -90,31 +90,35 @@ angular.module('imageID.controllers', [])
   $scope.facebookLogin = function(){
     $cordovaOauth.facebook(FACEBOOK_CLIENT_ID, ["email"]).then(function(result) {
         //console.log("Response Object -> " + JSON.stringify(result));
-        $ionicLoading.show({
-          template: 'Loging in...'
-        });
-        AuthService.fbLogin(result.access_token)
-        .then(function(user){
-          $scope.closeLogin();
-          $ionicLoading.hide();
-          $scope.loggedIn = true;
-          
-          localStorage.setItem("user", JSON.stringify({
-            "access_token" : result.access_token
-          }));
-          
-          $scope.loginData = {};
-          
-          $scope.getProfile();
-        },function(err){
-          $scope.loginData.error = err;
-          $scope.loggedIn = true;
-          $ionicLoading.hide();
-        });
+        $scope.processFbToken(result.access_token);
     }, function(error) {
         console.log("Error -> " + error);
     });
   };
+  
+  $scope.processFbToken = function(fbtoken){
+    $ionicLoading.show({
+      template: 'Loging in...'
+    });
+    AuthService.fbLogin(fbtoken)
+    .then(function(user){
+      $scope.closeLogin();
+      $ionicLoading.hide();
+      $scope.loggedIn = true;
+      
+      localStorage.setItem("user", JSON.stringify({
+        "fbtoken" : fbtoken
+      }));
+      
+      $scope.loginData = {};
+      
+      $scope.getProfile();
+    },function(err){
+      $scope.loginData.error = err;
+      $scope.loggedIn = true;
+      $ionicLoading.hide();
+    });
+  }
   
   $scope.getProfile = function(){
     var userID = AuthService.getUser().data.id;
@@ -153,7 +157,12 @@ angular.module('imageID.controllers', [])
   
   
   if(localStorage.getItem("user") != null){
-    $scope.loginData = JSON.parse(localStorage.getItem("user"));
-    $scope.doLogin();
+    var x = JSON.parse(localStorage.getItem("user"));
+    if (x.userName != null){
+      $scope.loginData = x; 
+      $scope.doLogin();
+    } else { 
+      $scope.processFbToken(x.fbtoken);
+    }
   }
 });

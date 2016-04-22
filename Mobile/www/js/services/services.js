@@ -429,9 +429,26 @@ angular.module('imageID.services')
     $http.jsonp(WORDPRESS_API_URL + 'user/fb_connect' + '?access_token='+ access_token + '&callback=JSON_CALLBACK&insecure=cool')
     .success(function(data) {
       //deferred.resolve(data);
+      
       var user = {
         cookie: data.cookie,
-        data: data.user_login,
+        data: {
+          "id": data.wp_user_id,
+          "username": data.user_login,
+          "nicename": data.user_login,
+          "email": "mohamedelkady@gmail.com",
+          "url": "",
+          "registered": "2015-12-27 05:23:07",
+          "displayname": data.user_login,
+          "firstname": data.user_login,
+          "lastname": data.user_login,
+          "nickname": data.user_login,
+          "description": "",
+          "capabilities": {
+            "administrator": false
+          },
+          "avatar": WORDPRESS_API_URL + '../wp-content/plugins/iid-plugin/logo.png'
+        },
         user_id: data.wp_user_id
       };
 
