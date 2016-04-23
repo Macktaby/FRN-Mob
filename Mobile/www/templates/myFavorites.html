@@ -15,17 +15,6 @@
       </div>
     </div>
     
-    <div class="item" ng-show="data.res_products != null && data.res_products.length > 0">Reserved Products</div>
-    <div class="list product-item-container profile-product-item" ng-repeat="p1 in data.res_products" ng-click="openProduct(p1)">
-      <div class="product-item">
-        <ng-image source="{{p1.thumbnail}}" class="full-image"></ng-image>
-        <div class="iid-item-data">
-            <div class="iid-item-data-title">{{p1.post_title}}</div>
-            <div class="iid-item-data-desc">{{p1.brand.post_title}}</div>
-        </div>
-      </div>
-    </div>
-    
   </ion-content>
 </ion-view>
 

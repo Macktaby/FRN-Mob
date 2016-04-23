@@ -11,6 +11,7 @@ angular.module('imageID.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
   $scope.loggedIn = false;
+  $scope.loggedInUser = "";
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -33,6 +34,7 @@ angular.module('imageID.controllers', [])
     AuthService.logOut();
     $scope.loginData = {};
     $scope.loggedIn = false;
+    $scope.loggedInUser = "";
     location.hash = "#/app/home";
     localStorage.removeItem("user");
   };
@@ -71,6 +73,7 @@ angular.module('imageID.controllers', [])
       $scope.closeLogin();
       $ionicLoading.hide();
       $scope.loggedIn = true;
+      $scope.loggedInUser = AuthService.getUser().data.username;
       
       localStorage.setItem("user", JSON.stringify({
         "userName" : $scope.loginData.userName,
@@ -82,7 +85,8 @@ angular.module('imageID.controllers', [])
       $scope.getProfile();
     },function(err){
       $scope.loginData.error = err;
-      $scope.loggedIn = true;
+      $scope.loggedIn = false;
+      $scope.loggedInUser = "";
       $ionicLoading.hide();
     });
   };
@@ -105,6 +109,7 @@ angular.module('imageID.controllers', [])
       $scope.closeLogin();
       $ionicLoading.hide();
       $scope.loggedIn = true;
+      $scope.loggedInUser = AuthService.getUser().data.username;
       
       localStorage.setItem("user", JSON.stringify({
         "fbtoken" : fbtoken
@@ -115,7 +120,8 @@ angular.module('imageID.controllers', [])
       $scope.getProfile();
     },function(err){
       $scope.loginData.error = err;
-      $scope.loggedIn = true;
+      $scope.loggedIn = false;
+      $scope.loggedInUser = "";
       $ionicLoading.hide();
     });
   }

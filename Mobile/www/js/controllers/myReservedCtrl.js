@@ -1,4 +1,4 @@
-angular.module('imageID.controllers').controller('ProfileCtrl', function($scope, $timeout, $state, AuthService, Restangular, WORDPRESS_REST_BASE_URL, $http, $ionicLoading) {
+angular.module('imageID.controllers').controller('MyReservedCtrl', function($scope, $timeout, $state, AuthService, Restangular, WORDPRESS_REST_BASE_URL, $http, $ionicLoading) {
 	$scope.data = {};
 	$scope.data.user = AuthService.getUser().data;
 	console.log("rewrew");

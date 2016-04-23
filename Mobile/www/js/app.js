@@ -264,12 +264,32 @@ angular.module('imageID', ['ionic', 'imageID.controllers', 'imageID.utils', 'ima
     }
   })
   
-  .state('app.profile', {
-    url: '/profile',
+  .state('app.myFavorites', {
+    url: '/myFavorites',
     views: {
       'menuContent': {
-        templateUrl: 'templates/profile.html',
-        controller: 'ProfileCtrl'
+        templateUrl: 'templates/myFavorites.html',
+        controller: 'MyFavoritesCtrl'
+      }
+    }
+  })
+  
+  .state('app.myReserved', {
+    url: '/myReserved',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/myReserved.html',
+        controller: 'MyReservedCtrl'
+      }
+    }
+  })
+  
+  .state('app.myProfile', {
+    url: '/myProfile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/myProfile.html',
+        controller: 'MyProfileCtrl'
       }
     }
   });
