@@ -19,13 +19,12 @@
     "cordova-plugin-console",
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
-    "com.ionic.keyboard",
-    "org.apache.cordova.inappbrowser",
+    "cordova-plugin-inappbrowser",
+    "ionic-plugin-keyboard",
     {
-      "locator": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git",
-      "id": "cordova-plugin-inappbrowser"
-    },
-    "ionic-plugin-keyboard"
+      "locator": "https://github.com/phonegap-build/PushPlugin.git",
+      "id": "com.phonegap.plugins.PushPlugin"
+    }
   ],
   "cordovaPlatforms": [
     "ios",
