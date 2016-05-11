@@ -2,6 +2,10 @@ angular.module('imageID.controllers').controller('VendorsCtrl', function($scope,
 	$scope.data = {};
 	$scope.data.vendors = [];
 	
+	$scope.$on("$ionicView.enter", function(event, data){
+		$('input').blur();
+	});
+	
 	$scope.vendorsPromise = Restangular.all('vendor').getList().then(function(posts) {
 		$scope.data.vendors = posts;
 	}).catch(function(err) {

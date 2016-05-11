@@ -98,6 +98,7 @@ $darkText:						  #050505 !default;
   color: $lightText;
   padding-left: 20px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .iid-item-data-desc {
@@ -113,6 +114,11 @@ $darkText:						  #050505 !default;
   background-color: $lightBG;
   color: $darkBG;
   font-size: 27px;
+}
+
+.homepage .iid-item-data-arrow {
+  background-color: $darkBG;
+  color: $lightText;
 }
 
 /*Vendors page*/
@@ -175,6 +181,17 @@ $darkText:						  #050505 !default;
   margin-top: -5px;
   background-color: $lightText;
   line-height: 23px;
+}
+
+.home-section-title {
+  text-align: left;
+  height: 50px;
+  background-color: $darkBG;
+  color: $lightText;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 50px;
+  font-size: 20px;
 }
 
 /*---------------------------------------------------------------------------------*/

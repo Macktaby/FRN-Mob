@@ -1,6 +1,10 @@
 angular.module('imageID.controllers').controller('ShowroomsCtrl', function($scope, $timeout, Restangular, $stateParams, MemoryService, $state) {
 	$scope.data = {};
 	
+	$scope.$on("$ionicView.enter", function(event, data){
+		$('input').blur();
+	});
+	
 	$scope.showroomsPromise = Restangular.all('type/showroom').getList().then(function(posts) {
 		$scope.data.showrooms = posts;
 	}).catch(function(err) {

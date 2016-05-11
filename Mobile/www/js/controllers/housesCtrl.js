@@ -2,6 +2,10 @@ angular.module('imageID.controllers').controller('HousesCtrl', function($scope, 
 	$scope.data = {};
 	$scope.data.houses = [];
 	
+	$scope.$on("$ionicView.enter", function(event, data){
+		$('input').blur();
+	});
+	
 	$scope.housesPromise = Restangular.all('type/house').getList().then(function(posts) {
 		$scope.data.houses = posts;
 	}).catch(function(err) {

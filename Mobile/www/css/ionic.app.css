@@ -9158,7 +9158,8 @@ a.button {
   width: 85%;
   color: #ffffff;
   padding-left: 20px;
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: top; }
 
 .iid-item-data-desc {
   color: #d0d0d0;
@@ -9172,6 +9173,10 @@ a.button {
   background-color: #ffdb00;
   color: #cf102d;
   font-size: 27px; }
+
+.homepage .iid-item-data-arrow {
+  background-color: #cf102d;
+  color: #ffffff; }
 
 /*Vendors page*/
 .product-item-container {
@@ -9224,6 +9229,16 @@ a.button {
   margin-top: -5px;
   background-color: #ffffff;
   line-height: 23px; }
+
+.home-section-title {
+  text-align: left;
+  height: 50px;
+  background-color: #cf102d;
+  color: #ffffff;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 50px;
+  font-size: 20px; }
 
 /*---------------------------------------------------------------------------------*/
 .product-avatar {

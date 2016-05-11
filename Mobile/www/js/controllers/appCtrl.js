@@ -60,10 +60,13 @@ angular.module('imageID.controllers', [])
   }
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    $ionicLoading.show({
-      template: 'Loging in...'
-    });
+  $scope.doLogin = function(showLoading) {
+    if(showLoading){
+      $ionicLoading.show({
+        template: 'Loging in...'
+      });
+    }
+    
     AuthService.doLogin($scope.loginData)
     .then(function(user){
       //success
@@ -166,7 +169,7 @@ angular.module('imageID.controllers', [])
     var x = JSON.parse(localStorage.getItem("user"));
     if (x.userName != null){
       $scope.loginData = x; 
-      $scope.doLogin();
+      $scope.doLogin(false);
     } else { 
       $scope.processFbToken(x.fbtoken);
     }

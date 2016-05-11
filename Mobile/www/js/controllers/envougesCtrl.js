@@ -2,6 +2,10 @@ angular.module('imageID.controllers').controller('EnvougesCtrl', function($scope
 	$scope.data = {};
 	$scope.data.envouges = [];
 	
+	$scope.$on("$ionicView.enter", function(event, data){
+		$('input').blur();
+	});
+	
 	$scope.envougesPromise = Restangular.all('type/EnVogue').getList().then(function(posts) {
 		$scope.data.envouges = posts;
 	}).catch(function(err) {
