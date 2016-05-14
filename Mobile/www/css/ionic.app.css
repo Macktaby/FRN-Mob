@@ -9086,28 +9086,32 @@ a.button {
 .has-header {
   top: 70px !important; }
 
-.bar.bar-positive, .bar.bar-header {
+.bar.bar-positive,
+.bar.bar-header {
   height: 70px !important; }
 
 .bar .title {
   height: 69px !important;
   line-height: 69px !important; }
 
-.button-clear, .bar.bar-header {
+.button-clear,
+.bar.bar-header {
   max-height: 70px !important; }
 
 /* IOS fixes */
 .platform-ios .has-header {
   top: 84px !important; }
 
-.platform-ios .bar.bar-positive, .platform-ios .bar.bar-header {
+.platform-ios .bar.bar-positive,
+.platform-ios .bar.bar-header {
   height: 84px !important; }
 
 .platform-ios .bar .title {
   height: 83px !important;
   line-height: 83px !important; }
 
-.platform-ios .button-clear, .platform-ios .bar.bar-header {
+.platform-ios .button-clear,
+.platform-ios .bar.bar-header {
   max-height: 84px !important; }
 
 .title.title-center.header-item {
@@ -9119,7 +9123,12 @@ a.button {
 .platform-ios .title.title-center.header-item {
   background-size: auto 50px; }
 
-.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
   background-color: transparent; }
 
 /*Home elements*/
@@ -9143,7 +9152,8 @@ a.button {
   height: 100%; }
 
 .iid-item img {
-  height: 200px; }
+  height: 200px;
+  margin-top: 1px; }
 
 .iid-item-data {
   text-align: left;
@@ -9225,7 +9235,10 @@ a.button {
   color: #ffffff;
   font-size: 30px; }
 
-.showroom .iid-item-data, products .iid-item-data, .products .iid-item-data, products .iid-item-data {
+.showroom .iid-item-data,
+products .iid-item-data,
+.products .iid-item-data,
+products .iid-item-data {
   margin-top: -5px;
   background-color: #ffffff;
   line-height: 23px; }
@@ -9238,7 +9251,87 @@ a.button {
   padding-left: 10px;
   padding-right: 10px;
   line-height: 50px;
-  font-size: 20px; }
+  font-size: 20px;
+  margin-top: 10px; }
+
+.home-item-caption-title {
+  line-height: 40px; }
+
+.left-pane,
+.right-pane {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  align-content: stretch;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: absolute;
+  height: 235px;
+  z-index: 100;
+  width: 44px;
+  background-color: transparent; }
+
+.left-pane {
+  left: 0; }
+
+.right-pane {
+  right: 0; }
+
+.company-logo {
+  vertical-align: middle;
+  max-width: 60%;
+  content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/256302/ionic-logo-white.png"); }
+
+.bar-balanced {
+  background-color: #33cd5f !important;
+  border-color: #2db955 !important; }
+
+.menu {
+  background-color: #555555 !important; }
+  .menu a:not(.item-divider):hover,
+  .menu a:not(.item-divider):active {
+    background-color: #464646;
+    background-image: linear-gradient(left, #33cd5f, #33cd5f 7px, transparent 7px, transparent 100%) !important;
+    background-image: -webkit-linear-gradient(left, #33cd5f, #33cd5f 7px, transparent 7px, transparent 100%) !important; }
+  .menu .active {
+    background-color: #464646 !important;
+    background-image: linear-gradient(left, #33cd5f, #33cd5f 7px, transparent 7px, transparent 100%) !important;
+    background-image: -webkit-linear-gradient(left, #33cd5f, #33cd5f 7px, transparent 7px, transparent 100%) !important; }
+  .menu .title {
+    text-align: center;
+    color: #fff; }
+  .menu .item,
+  .menu .bar-header {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    padding-top: 16px;
+    padding-bottom: 16px; }
+    .menu .item i:before,
+    .menu .bar-header i:before {
+      font-size: 22px; }
+  .menu .bar-header {
+    background-color: #33cd5f; }
+
+/* Override the Ionic icons with Android specific ones */
+.ion-home:before {
+  content: "\f38f"; }
+
+.ion-compose:before {
+  content: "\f373"; }
+
+.ion-person:before {
+  content: "\f2d9"; }
 
 /*---------------------------------------------------------------------------------*/
 .product-avatar {

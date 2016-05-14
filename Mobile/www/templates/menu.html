@@ -1,36 +1,35 @@
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-positive mynavbar">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
-
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-positive">
-      <h1 class="title">{{loggedInUser}}</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close href="#/app/home">Home</ion-item>
-        <ion-item menu-close ng-click="login()" ng-hide="loggedIn">Login</ion-item>
-        <ion-item menu-close ng-click="logout()" ng-show="loggedIn">Logout</ion-item>
-        <ion-item menu-close href="#/app/register" ng-hide="loggedIn">Register</ion-item>
-        <ion-item menu-close href="#/app/myProfile" ng-show="loggedIn">My Profile</ion-item>
-        <ion-item menu-close href="#/app/catalogs">Catalogs</ion-item>
-        <ion-item menu-close href="#/app/products">Products</ion-item>
-        <ion-item menu-close href="#/app/showrooms">Showrooms</ion-item>
-        <ion-item menu-close href="#/app/designers">Designers</ion-item>
-        <ion-item menu-close href="#/app/houses">Houses</ion-item>
-        <ion-item menu-close href="#/app/envouges">En Vogue</ion-item>
-        <ion-item menu-close href="#/app/contactUs">About Us</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive mynavbar">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+        <ion-content>
+            <ul class="list">
+                <span class="item item-header margin-top-15">
+                <!-- <h1 class="title"><img class="company-logo"/></h1> -->
+                <h1 class="title">{{loggedInUser}}</h1>
+              </span>
+                <a href="#/app/home" class="item item-icon-left" menu-close><i class="icon ion-home"></i> Home</a>
+                <a ng-hide="loggedIn" ng-click="login()" class="item item-icon-left" menu-close><i class="icon ion-compose"></i> Login</a>
+                <a ng-show="loggedIn" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-compose"></i> Logout</a>
+                <a ng-hide="loggedIn" href="#/app/register" class="item item-icon-left" menu-close><i class="icon ion-home"></i> Register</a>
+                <a ng-show="loggedIn" href="#/app/myProfile" class="item item-icon-left" menu-close><i class="icon ion-person"></i> My Profile</a>
+                <a href="#/app/catalogs" class="item item-icon-left" menu-close><i class="icon ion-ios-bookmarks"></i> Catalogs</a>
+                <a href="#/app/products" class="item item-icon-left" menu-close><i class="icon ion-briefcase"></i> Products</a>
+                <a href="#/app/showrooms" class="item item-icon-left" menu-close><i class="icon ion-home"></i> Showrooms</a>
+                <a href="#/app/designers" class="item item-icon-left" menu-close><i class="icon ion-paintbrush"></i> Designers</a>
+                <a href="#/app/houses" class="item item-icon-left" menu-close><i class="icon ion-ios-home"></i> Houses</a>
+                <a href="#/app/envouges" class="item item-icon-left" menu-close><i class="icon ion-easel"></i> En Vogue</a>
+                <a href="#/app/contactUs" class="item item-icon-left" menu-close><i class="icon ion-ios-information"></i> About Us</a>
+            </ul>
+        </ion-content>
+    </ion-side-menu>
 </ion-side-menus>

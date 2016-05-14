@@ -1,334 +1,463 @@
-$lightBG: 						  #FFE223 !default;
-$darkBG:	   					  #cf102d !default;
-$lightText:						  #ffffff !default;
-$medText:						    #d0d0d0 !default;
-$darkText:						  #050505 !default;
+$lightBG: #FFE223 !default;
+$darkBG: #cf102d !default;
+$lightText: #ffffff !default;
+$medText: #d0d0d0 !default;
+$darkText: #050505 !default;
 
 /*Overriding Ionic*/
+
 .has-header {
-  top: 70px !important;
+    top: 70px !important;
 }
 
-.bar.bar-positive, .bar.bar-header {
-  height: 70px !important;
+.bar.bar-positive,
+.bar.bar-header {
+    height: 70px !important;
 }
 
 .bar .title {
-  height: 69px !important;
-  line-height: 69px !important;
+    height: 69px !important;
+    line-height: 69px !important;
 }
 
-.button-clear, .bar.bar-header {
-  max-height: 70px !important;
+.button-clear,
+.bar.bar-header {
+    max-height: 70px !important;
 }
+
 
 /* IOS fixes */
+
 .platform-ios .has-header {
-  top: 84px !important;
+    top: 84px !important;
 }
 
-.platform-ios .bar.bar-positive, .platform-ios .bar.bar-header {
-  height: 84px !important;
+.platform-ios .bar.bar-positive,
+.platform-ios .bar.bar-header {
+    height: 84px !important;
 }
 
 .platform-ios .bar .title {
-  height: 83px !important;
-  line-height: 83px !important;
+    height: 83px !important;
+    line-height: 83px !important;
 }
 
-.platform-ios .button-clear, .platform-ios .bar.bar-header {
-  max-height: 84px !important;
+.platform-ios .button-clear,
+.platform-ios .bar.bar-header {
+    max-height: 84px !important;
 }
 
-.title.title-center.header-item{
-  background-image: url(../img/logo.png);
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: 50%;
+.title.title-center.header-item {
+    background-image: url(../img/logo.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
 }
 
-.platform-ios .title.title-center.header-item{
+.platform-ios .title.title-center.header-item {
     background-size: auto 50px;
 }
 
-.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
-  background-color: rgba(0,0,0,0);
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
+    background-color: rgba(0, 0, 0, 0);
 }
 
+
 /*Home elements*/
-.home-adv-title{
-  width: 100%;
-  padding-left: 10px;
-  padding-top: 10px;
-  font-size: 20px;
+
+.home-adv-title {
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 20px;
 }
 
 .home-adv {
-  width: 100%;
-  height: 150px;
+    width: 100%;
+    height: 150px;
 }
 
 .iid-item-container {
-  text-align: center;
-  padding: 0px;
-  border: 0;
+    text-align: center;
+    padding: 0px;
+    border: 0;
 }
 
 .iid-item {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .iid-item img {
-  height: 200px;
+    height: 200px;
+    margin-top: 1px;
 }
 
 .iid-item-data {
-  text-align: left;
-  height: 50px;
-  background-color: $darkBG;
-  margin-left: -5px;
-  margin-right: -5px;
-  line-height: 50px;
-  font-size: 20px;
+    text-align: left;
+    height: 50px;
+    background-color: $darkBG;
+    margin-left: -5px;
+    margin-right: -5px;
+    line-height: 50px;
+    font-size: 20px;
 }
 
 .iid-item-data-title {
-  width: 85%;
-  color: $lightText;
-  padding-left: 20px;
-  display: inline-block;
-  vertical-align: top;
+    width: 85%;
+    color: $lightText;
+    padding-left: 20px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .iid-item-data-desc {
-  color: $medText;
-  padding-left: 5px;
-  font-size: 0.8em;
+    color: $medText;
+    padding-left: 5px;
+    font-size: 0.8em;
 }
 
 .iid-item-data-arrow {
-  display: inline-block;
-  width: 15%;
-  text-align: center;
-  background-color: $lightBG;
-  color: $darkBG;
-  font-size: 27px;
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+    background-color: $lightBG;
+    color: $darkBG;
+    font-size: 27px;
 }
 
 .homepage .iid-item-data-arrow {
-  background-color: $darkBG;
-  color: $lightText;
+    background-color: $darkBG;
+    color: $lightText;
 }
+
 
 /*Vendors page*/
+
 .product-item-container {
-  padding: 5px;
+    padding: 5px;
 }
 
-.product-item{
-  width: 100%;
-  height: 100%;
-  border: 2px solid $darkBG;
+.product-item {
+    width: 100%;
+    height: 100%;
+    border: 2px solid $darkBG;
 }
 
 .product-item img {
-  height: 150px;
-  width: 100%;
+    height: 150px;
+    width: 100%;
 }
 
 .product-item .iid-item-data {
-  margin-left: 0;
-  margin-right: 5px;
-  margin-top: -5px;
-  background-color: $lightBG;
+    margin-left: 0;
+    margin-right: 5px;
+    margin-top: -5px;
+    background-color: $lightBG;
 }
 
 .product-item .iid-item-data-title {
-  padding-left: 5px;
-  margin-top: 3px;
-  color: $darkText;
-  text-transform: uppercase;
-}
-.product-item .iid-item-data-arrow {
-  color: $darkText;
-  font-size: 33px;
+    padding-left: 5px;
+    margin-top: 3px;
+    color: $darkText;
+    text-transform: uppercase;
 }
 
+.product-item .iid-item-data-arrow {
+    color: $darkText;
+    font-size: 33px;
+}
+
+
 /*Showrooms page*/
-.vendor-banner{
-  background-color: $lightBG;
+
+.vendor-banner {
+    background-color: $lightBG;
 }
 
 .vendor-logo {
-  float: left;
-  width: 150px;
-  height: 150px;
+    float: left;
+    width: 150px;
+    height: 150px;
 }
 
-.vendor-info-area{
-  padding-top: 5px;
-  margin-left: 155px;
+.vendor-info-area {
+    padding-top: 5px;
+    margin-left: 155px;
 }
 
 .vendor .item-options .button {
-  background-color: $darkBG;
-  color: $lightText;
-  font-size: 30px;
+    background-color: $darkBG;
+    color: $lightText;
+    font-size: 30px;
 }
 
-.showroom .iid-item-data, products .iid-item-data, .products .iid-item-data, products .iid-item-data {
-  margin-top: -5px;
-  background-color: $lightText;
-  line-height: 23px;
+.showroom .iid-item-data,
+products .iid-item-data,
+.products .iid-item-data,
+products .iid-item-data {
+    margin-top: -5px;
+    background-color: $lightText;
+    line-height: 23px;
 }
 
 .home-section-title {
-  text-align: left;
-  height: 50px;
-  background-color: $darkBG;
-  color: $lightText;
-  padding-left: 10px;
-  padding-right: 10px;
-  line-height: 50px;
-  font-size: 20px;
+    text-align: left;
+    height: 50px;
+    background-color: $darkBG;
+    color: $lightText;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 50px;
+    font-size: 20px;
+    margin-top: 10px;
 }
+
+.home-item-caption-title {
+    line-height: 40px;
+}
+
+.left-pane,
+.right-pane {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    align-content: stretch;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    position: absolute;
+    height: 235px;
+    z-index: 100;
+    width: 44px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.left-pane {
+    left: 0;
+}
+
+.right-pane {
+    right: 0;
+}
+
+.company-logo {
+    vertical-align: middle;
+    max-width: 60%;
+    content: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/256302/ionic-logo-white.png');
+}
+
+.bar-balanced {
+    background-color: $balanced !important;
+    border-color: darken($balanced, 5%) !important;
+}
+
+$menu-background: #555555;
+.menu {
+    background-color: $menu-background !important;
+    & a:not(.item-divider):hover,
+    & a:not(.item-divider):active {
+        background-color: #464646;
+        background-image: linear-gradient(left, $balanced, $balanced 7px, transparent 7px, transparent 100%) !important;
+        background-image: -webkit-linear-gradient(left, $balanced, $balanced 7px, transparent 7px, transparent 100%) !important;
+    }
+    .active {
+        background-color: #464646 !important;
+        background-image: linear-gradient(left, $balanced, $balanced 7px, transparent 7px, transparent 100%) !important;
+        background-image: -webkit-linear-gradient(left, $balanced, $balanced 7px, transparent 7px, transparent 100%) !important;
+    }
+    .title {
+        text-align: center;
+        color: #fff;
+    }
+    .item,
+    .bar-header {
+        background-color: transparent;
+        color: #ffffff;
+        border: none;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        i:before {
+            font-size: 22px;
+        }
+    }
+    .bar-header {
+        background-color: $balanced;
+    }
+}
+
+
+/* Override the Ionic icons with Android specific ones */
+
+// ion-android-home
+.ion-home:before {
+    content: "\f38f";
+}
+
+// ion-android-checkbox-outline
+.ion-compose:before {
+    content: "\f373";
+}
+
+// ion-android-contacts
+.ion-person:before {
+    content: "\f2d9";
+}
+
 
 /*---------------------------------------------------------------------------------*/
 
 .product-avatar {
-  width: 100%;
+    width: 100%;
 }
 
 .padded-div {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .designer-thumb {
-  position: absolute;
-  right: 10px;
-  bottom: 65px;
-  height: 100px !important;
-  width: 100px !important;
-  border-radius: 1000px;
+    position: absolute;
+    right: 10px;
+    bottom: 65px;
+    height: 100px !important;
+    width: 100px !important;
+    border-radius: 1000px;
 }
 
 .product-gallery {
-  height: 300px;
-  text-align: center;
+    height: 300px;
+    text-align: center;
 }
 
 .product-gallery-img {
-  height: 100%;
+    height: 100%;
 }
 
 .house-gallery img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .item {
-  background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .designer a.item {
-  border: 0 !important;
+    border: 0 !important;
 }
 
 
- /* Start of open close */
+/* Start of open close */
+
 .filters-area {
-  height: 20px;
+    height: 20px;
 }
+
 .sort-holder {
-   height: 20px;
-   display: inline;
+    height: 20px;
+    display: inline;
 }
 
 .sort-holder.active .opener:after {
-	display: block;
+    display: block;
 }
 
 .sort-holder .opener {
-	position: relative;
-	width: 33%;
-	float: left;
-	color: #323232;
-	line-height: 16px;
-	font-weight: 700;
-	padding: 13px 13px 14px 20px;
-	position: relative;
+    position: relative;
+    width: 33%;
+    float: left;
+    color: #323232;
+    line-height: 16px;
+    font-weight: 700;
+    padding: 13px 13px 14px 20px;
+    position: relative;
 }
 
 .showroom .sort-holder .opener {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .showroom .sort-holder .slide {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .sort-holder .opener:after {
-	display: none;
-	position: absolute;
-	content: "";
-	left: 0;
-	bottom: -1px;
-	width: 100%;
-	height: 1px;
-	background: #fff;
+    display: none;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background: #fff;
 }
 
 .sort-holder .opener span {
-	min-width: 100%;
-	position: relative;
-	display: inline-block;
-	vertical-align: top;
+    min-width: 100%;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .sort-holder .opener span:after {
-	position: absolute;
-	right: 0;
-	top: 5px;
-	content: "";
-	border: 4px solid transparent;
-	border-top: 7px solid #000;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    content: "";
+    border: 4px solid transparent;
+    border-top: 7px solid #000;
 }
 
 .sort-holder .slide {
-	position: absolute;
-	left: 0;
-	top: 45px;
-	width: 50%;
-	background: #fff;
-  z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 45px;
+    width: 50%;
+    background: #fff;
+    z-index: 100;
 }
 
 .sort-holder .slide.left-slide {
-  left: auto;
-  right: 0;
+    left: auto;
+    right: 0;
 }
 
 .sort-holder .slide.middle-slide {
-  left: 30%;
-  right: 0;
+    left: 30%;
+    right: 0;
 }
 
 .sort-holder .slide li {
-	line-height: 22px;
+    line-height: 22px;
 }
 
 .sort-holder .slide a {
-	color: #323232;
-	display: block;
-	padding: 9px 20px;
+    color: #323232;
+    display: block;
+    padding: 9px 20px;
 }
+
+
 /* End of open close */
 
 .login-error {
-  color: #ff0000;
+    color: #ff0000;
 }
 
 .favourite-icon {

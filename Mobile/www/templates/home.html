@@ -1,181 +1,122 @@
 <ion-view view-title="" can-swipe-back="false">
-  <ion-content class="homepage">
-    <div class="row home-adv-bar" cg-busy="adsPromise">
-      <div class="col" ng-repeat="ad in data.ads" ng-click="openAd(ad)">
-        <ng-image source="{{ad.thumbnail}}" class="home-adv">
-      </div>
-    </div>
-
-    <div cg-busy="featuredPromise">
-      <!--Products-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Products</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)" show-pager="false">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'product'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-            <div class="iid-item">
-              <iid-favorite item-id="{{fp.id}}" ng-show="loggedIn"></iid-favorite>
-              <ng-image source="{{fp.thumbnail}}"></ng-image>
-              <div class="iid-item-data">
-                <div class="iid-item-data-title">{{fp.post_title}}</div>
-              </div>
+    <ion-content class="homepage">
+        <div class="row home-adv-bar" cg-busy="adsPromise">
+            <div class="col" ng-repeat="ad in data.ads" ng-click="openAd(ad)">
+                <ng-image source="{{:: ad.thumbnail}}" class="home-adv">
             </div>
-          </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--Designers-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Designers</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'designer'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-            <div class="iid-item">
-              <ng-image source="{{fp.thumbnail}}"></ng-image>
-              <div class="iid-item-data">
-                <div class="iid-item-data-title">{{fp.post_title}}</div>
-                <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-              </div>
+        </div>
+        <div cg-busy="featuredPromise" ng-show="data.featured.length > 0">
+            <!--Products-->
+            <div class="home-section-title">Featured Products</div>
+            <div>
+                <div class="left-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-left" ng-click="previous('products')"></button>
+                </div>
+                <div class="right-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-right" ng-click="next('products')"></button>
+                </div>
+                <ion-slide-box does-continue="true" show-pager="false" delegate-handle="products">
+                    <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'product'}">
+                        <div class="item iid-item-container" ng-click="openDetails(fp)">
+                            <div class="iid-item">
+                                <iid-favorite item-id="{{:: fp.id}}" ng-show="loggedIn"></iid-favorite>
+                                <ng-image source="{{:: fp.thumbnail}}"></ng-image>
+                                <div class="home-item-caption">
+                                    <div class="home-item-caption-title">{{:: fp.post_title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
-          </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--showroom-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Showrooms</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'showroom'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-            <div class="iid-item">
-              <ng-image source="{{fp.thumbnail}}"></ng-image>
-              <div class="iid-item-data">
-                <div class="iid-item-data-title">{{fp.post_title}}</div>
-                <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-              </div>
+            <!--Designers-->
+            <div class="home-section-title">Featured Designers</div>
+            <div>
+                <div class="left-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-left" ng-click="previous('designers')"></button>
+                </div>
+                <div class="right-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-right" ng-click="next('designers')"></button>
+                </div>
+                <ion-slide-box does-continue="true" show-pager="false" delegate-handle="designers">
+                    <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'designer'}">
+                        <div class="item iid-item-container" ng-click="openDetails(fp)">
+                            <div class="iid-item">
+                                <ng-image source="{{:: fp.thumbnail}}"></ng-image>
+                                <div class="home-item-caption">
+                                    <div class="home-item-caption-title">{{:: fp.post_title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
-          </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--catalog-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Catalogs</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'catalog'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-            <div class="iid-item">
-              <ng-image source="{{fp.thumbnail}}"></ng-image>
-              <div class="iid-item-data">
-                <div class="iid-item-data-title">{{fp.post_title}}</div>
-                <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-              </div>
+            <!--showroom-->
+            <div class="home-section-title">Featured Showrooms</div>
+            <div>
+                <div class="left-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-left" ng-click="previous('showrooms')"></button>
+                </div>
+                <div class="right-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-right" ng-click="next('showrooms')"></button>
+                </div>
+                <ion-slide-box does-continue="true" show-pager="false" delegate-handle="showrooms">
+                    <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'showroom'}">
+                        <div class="item iid-item-container" ng-click="openDetails(fp)">
+                            <div class="iid-item">
+                                <ng-image source="{{:: fp.thumbnail}}"></ng-image>
+                                <div class="home-item-caption">
+                                    <div class="home-item-caption-title">{{:: fp.post_title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
-          </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--house-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Houses</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'house'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-            <div class="iid-item">
-              <ng-image source="{{fp.thumbnail}}"></ng-image>
-              <div class="iid-item-data">
-                <div class="iid-item-data-title">{{fp.post_title}}</div>
-                <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-              </div>
+            <!--catalog-->
+            <div class="home-section-title">Featured Catalogs</div>
+            <div>
+                <div class="left-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-left" ng-click="previous('catalogs')"></button>
+                </div>
+                <div class="right-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-right" ng-click="next('catalogs')"></button>
+                </div>
+                <ion-slide-box does-continue="true" show-pager="false" delegate-handle="catalogs">
+                    <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'catalog'}">
+                        <div class="item iid-item-container" ng-click="openDetails(fp)">
+                            <div class="iid-item">
+                                <ng-image source="{{:: fp.thumbnail}}"></ng-image>
+                                <div class="home-item-caption">
+                                    <div class="home-item-caption-title">{{:: fp.post_title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
-          </div>
-        </ion-slide>
-      </ion-slide-box>
-
-    </div>
-  </ion-content>
-</ion-view><ion-view view-title="" can-swipe-back="false">
-  <ion-content class="homepage">
-    <div class="row home-adv-bar"  cg-busy="adsPromise">
-      <div class="col" ng-repeat="ad in data.ads" ng-click="openAd(ad)"><ng-image source="{{ad.thumbnail}}" class="home-adv"></div>
-    </div>
-
-    <div cg-busy="featuredPromise">
-      <!--Products-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Products</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)" show-pager="false">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'product'}">
-            <div class="item iid-item-container" ng-click="openDetails(fp)">
-                <div class="iid-item">
-                <iid-favorite item-id="{{fp.id}}" ng-show="loggedIn"></iid-favorite>
-                <ng-image source="{{fp.thumbnail}}"></ng-image>
-                <div class="iid-item-data">
-                    <div class="iid-item-data-title">{{fp.post_title}}</div>
+            <!--house-->
+            <div class="home-section-title">Featured Houses</div>
+            <div>
+                <div class="left-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-left" ng-click="previous('houses')"></button>
                 </div>
+                <div class="right-pane">
+                    <button class="slider-button button button-positive button-clear no-animation icon ion-chevron-right" ng-click="next('houses')"></button>
                 </div>
+                <ion-slide-box does-continue="true" show-pager="false" delegate-handle="houses">
+                    <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'house'}">
+                        <div class="item iid-item-container" ng-click="openDetails(fp)">
+                            <div class="iid-item">
+                                <ng-image source="{{:: fp.thumbnail}}"></ng-image>
+                                <div class="home-item-caption">
+                                    <div class="home-item-caption-title">{{:: fp.post_title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--Designers-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Designers</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'designer'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-                <div class="iid-item">
-                <ng-image source="{{fp.thumbnail}}"></ng-image>
-                <div class="iid-item-data">
-                    <div class="iid-item-data-title">{{fp.post_title}}</div>
-                    <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-                </div>
-                </div>
-            </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--showroom-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Showrooms</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'showroom'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-                <div class="iid-item">
-                <ng-image source="{{fp.thumbnail}}"></ng-image>
-                <div class="iid-item-data">
-                    <div class="iid-item-data-title">{{fp.post_title}}</div>
-                    <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-                </div>
-                </div>
-            </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--catalog-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Catalogs</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'catalog'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-                <div class="iid-item">
-                <ng-image source="{{fp.thumbnail}}"></ng-image>
-                <div class="iid-item-data">
-                    <div class="iid-item-data-title">{{fp.post_title}}</div>
-                    <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-                </div>
-                </div>
-            </div>
-        </ion-slide>
-      </ion-slide-box>
-
-      <!--house-->
-      <div class="home-section-title" ng-show="data.featured.length > 0">Featured Houses</div>
-      <ion-slide-box does-continue="true" pager-click="pagerClick(index)">
-        <ion-slide ng-repeat="fp in data.featured | filter:{post_type:'house'}">
-          <div class="item iid-item-container" ng-click="openDetails(fp)">
-                <div class="iid-item">
-                <ng-image source="{{fp.thumbnail}}"></ng-image>
-                <div class="iid-item-data">
-                    <div class="iid-item-data-title">{{fp.post_title}}</div>
-                    <div class="iid-item-data-arrow"><i class="ion-chevron-right"></i></div>
-                </div>
-                </div>
-            </div>
-        </ion-slide>
-      </ion-slide-box>
-
-    </div>
-  </ion-content>
+        </div>
+    </ion-content>
 </ion-view>
