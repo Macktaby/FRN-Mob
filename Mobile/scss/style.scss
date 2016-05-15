@@ -1,5 +1,5 @@
 $lightBG: #FFE223 !default;
-$darkBG: #cf102d !default;
+$darkBG: #DC6253 !default;
 $lightText: #ffffff !default;
 $medText: #d0d0d0 !default;
 $darkText: #050505 !default;
@@ -266,7 +266,7 @@ products .iid-item-data {
     border-color: darken($balanced, 5%) !important;
 }
 
-$menu-background: #555555;
+$menu-background: #5F9AC2;
 .menu {
     background-color: $menu-background !important;
     & a:not(.item-divider):hover,
@@ -316,6 +316,13 @@ $menu-background: #555555;
 // ion-android-contacts
 .ion-person:before {
     content: "\f2d9";
+}
+
+.login-name {
+    font-size: 20px !important;
+    line-height: 40px;
+    color: $lightText;
+    text-align: center;
 }
 
 

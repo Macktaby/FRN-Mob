@@ -13,10 +13,11 @@
     <ion-side-menu side="left">
         <ion-content>
             <ul class="list">
-                <span class="item item-header margin-top-15">
-                <!-- <h1 class="title"><img class="company-logo"/></h1> -->
-                <h1 class="title">{{loggedInUser}}</h1>
-              </span>
+                <a menu-close class="item margin-top-15 item-avatar" ng-show="loggedIn" href="#/app/myProfile">
+                    <!-- <h1 class="title"><img class="company-logo"/></h1> -->
+                    <img src="img/logo.png" />
+                    <h2 class="login-name">{{loggedInUser}}</h2>
+                </a>
                 <a href="#/app/home" class="item item-icon-left" menu-close><i class="icon ion-home"></i> Home</a>
                 <a ng-hide="loggedIn" ng-click="login()" class="item item-icon-left" menu-close><i class="icon ion-compose"></i> Login</a>
                 <a ng-show="loggedIn" ng-click="logout()" class="item item-icon-left" menu-close><i class="icon ion-compose"></i> Logout</a>
