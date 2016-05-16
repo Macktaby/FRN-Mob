@@ -17,14 +17,20 @@ $dark:                            #444 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // My custom color. I’ll override the default for $positive.
 // Note that it’s before we load the rest of Ionic.
 // This is important!
-$positive: #3283C7 !default;
-$calm: #DC6253 !default;
-$font-family-sans-serif: "Roboto", "Segoe UI", sans-serif !default;
+$positive: #050505 !default;
+$calm: #d0d0d0 !default;
 
-// Include all of Ionic 
+/*
+New Style
+$positive: #3283C7 !default;
+$calm: #DC6253 !default; 
+*/
+
+
+/* Include all of Ionic  */
+
 @import "www/lib/ionic/scss/ionic";
 @import "style.scss";

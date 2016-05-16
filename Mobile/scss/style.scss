@@ -1,8 +1,21 @@
+/*
+New style
 $lightBG: #FFE223 !default;
 $darkBG: #DC6253 !default;
 $lightText: #ffffff !default;
 $medText: #d0d0d0 !default;
 $darkText: #050505 !default;
+$menu-background: #5F9AC2;
+$menu-text: #fff;
+*/
+
+$lightBG: #FFE223 !default;
+$darkBG: #cf102d !default;
+$lightText: #ffffff !default;
+$medText: #d0d0d0 !default;
+$darkText: #050505 !default;
+$menu-background: #F3F3F3;
+$menu-text: #050505;
 
 /*Overriding Ionic*/
 
@@ -266,7 +279,6 @@ products .iid-item-data {
     border-color: darken($balanced, 5%) !important;
 }
 
-$menu-background: #5F9AC2;
 .menu {
     background-color: $menu-background !important;
     & a:not(.item-divider):hover,
@@ -282,12 +294,12 @@ $menu-background: #5F9AC2;
     }
     .title {
         text-align: center;
-        color: #fff;
+        color: $menu-text;
     }
     .item,
     .bar-header {
         background-color: transparent;
-        color: #ffffff;
+        color: $menu-text;
         border: none;
         padding-top: 16px;
         padding-bottom: 16px;
@@ -321,8 +333,13 @@ $menu-background: #5F9AC2;
 .login-name {
     font-size: 20px !important;
     line-height: 40px;
-    color: $lightText;
+    color: $menu-text;
     text-align: center;
+}
+
+.menu a:not(.item-divider):hover,
+.menu a:not(.item-divider):active {
+    background-color: $menu-background !important;
 }
 
 
