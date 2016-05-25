@@ -7,7 +7,7 @@
         </div>
         <div cg-busy="showroomsPromise">
             <ion-list can-swipe="true">
-                <div ng-repeat="s in data.showrooms | filter:{post_title:searchFilter}">
+                <div ng-repeat="s in filteredData = (data.showrooms | filter:{post_title:searchFilter})">
                     <ion-item class="item item-icon-right" ng-click="toggleGroup(s)" ng-class="{active: isGroupShown(s)}">
                         <h2>{{s.post_title}}</h2>
                         <p>{{s.address}}</p>
@@ -20,6 +20,7 @@
                         <button class="button button-full button-positive" ng-click="openShowroom(s);">Products</button>
                     </div>
                 </div>
+                <div class="item item-no-data" ng-show="data.showrooms.length > 0 && filteredData.length < 1">No data</div>
             </ion-list>
         </div>
     </ion-content>

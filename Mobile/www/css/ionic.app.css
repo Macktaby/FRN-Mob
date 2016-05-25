@@ -9261,13 +9261,13 @@ products .iid-item-data {
 
 .home-section-title {
   text-align: left;
-  height: 50px;
+  height: 45px;
   background-color: #cf102d;
   color: #ffffff;
   padding-left: 10px;
   padding-right: 10px;
-  line-height: 50px;
-  font-size: 20px;
+  line-height: 45px;
+  font-size: 18px;
   margin-top: 10px; }
 
 .home-item-caption-title {
@@ -9511,3 +9511,11 @@ products .iid-item-data {
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
   display: block !important; }
+
+.item-no-data {
+  border: none !important;
+  padding-top: 0px; }
+
+.home-adv-bar {
+  padding-bottom: 0px;
+  margin-bottom: -5px; }

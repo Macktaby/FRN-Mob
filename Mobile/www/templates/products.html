@@ -4,33 +4,33 @@
             <div class="sort-holder">
                 <a class="opener"><span>Brands</span></a>
                 <ul class="slide">
-                    <li class="item"><a ng-click="setBrandFilter('!!')">All</a></li>
-                    <li class="item" ng-repeat="v in data.brands"><a ng-click="setBrandFilter(v.ID)">{{:: v.post_title}}</a></li>
+                    <li class="item item-icon-left"><i ng-show="brandFilter == '!!'" class="icon ion-checkmark"></i><a ng-click="setBrandFilter( '!!') ">All</a></li>
+                    <li class="item item-icon-left" ng-repeat="v in data.brands "><i ng-show="brandFilter == v.ID" class="icon ion-checkmark"></i><a ng-click="setBrandFilter(v.ID) ">{{:: v.post_title}}</a></li>
                 </ul>
             </div>
-            <div class="sort-holder">
-                <a class="opener"><span>Showrooms</span></a>
-                <ul class="slide middle-slide">
-                    <li class="item"><a ng-click="setShowroomFilter('!!')">All</a></li>
-                    <li class="item" ng-repeat="v in data.showrooms"><a ng-click="setShowroomFilter(v.ID)">{{:: v.post_title}}</a></li>
+            <div class="sort-holder ">
+                <a class="opener "><span>Showrooms</span></a>
+                <ul class="slide middle-slide ">
+                    <li class="item item-icon-left"><i ng-show="showroomFilter == '!!'" class="icon ion-checkmark"></i><a ng-click="setShowroomFilter( '!!') ">All</a></li>
+                    <li class="item item-icon-left" ng-repeat="v in data.showrooms "><i ng-show="showroomFilter == v.ID" class="icon ion-checkmark"></i><a ng-click="setShowroomFilter(v.ID) ">{{:: v.post_title}}</a></li>
                 </ul>
             </div>
-            <div class="sort-holder">
-                <a class="opener"><span>Categories</span></a>
-                <ul class="slide left-slide">
-                    <li class="item"><a ng-click="setCategoryFilter('!!')">All</a></li>
-                    <li class="item" ng-repeat="v in data.categories"><a ng-click="setCategoryFilter(v.ID)">{{:: v.post_title}}</a></li>
+            <div class="sort-holder ">
+                <a class="opener "><span>Categories</span></a>
+                <ul class="slide left-slide ">
+                    <li class="item item-icon-left"><i ng-show="categoryFilter == '!!'" class="icon ion-checkmark"></i><a ng-click="setCategoryFilter( '!!') ">All</a></li>
+                    <li class="item item-icon-left" ng-repeat="v in data.categories "><i ng-show="categoryFilter == v.ID" class="icon ion-checkmark"></i><a ng-click="setCategoryFilter(v.ID) ">{{:: v.post_title}}</a></li>
                 </ul>
             </div>
         </div>
-        <div cg-busy="showroomPromise" id="productsArea">
-            <div class="list product-item-container" collection-repeat="p in data.products | filter:{brandID:brandFilter} | filter:{showroomID:showroomFilter} | filter:{categoryID:categoryFilter} track by p.id" item-width="50%" item-height="214px" ng-click="openProduct(p)">
-                <div class="product-item">
-                    <iid-favorite item-id="{{:: p.id}}" ng-show="loggedIn"></iid-favorite>
-                    <ng-image source="{{:: p.thumbnail}}" class="full-image"></ng-image>
-                    <div class="iid-item-data">
-                        <div class="iid-item-data-title">{{:: p.post_title}}</div>
-                        <div class="iid-item-data-desc">{{:: p.brand.post_title}}</div>
+        <div cg-busy="showroomPromise " id="productsArea ">
+            <div class="list product-item-container " collection-repeat="p in data.products | filter:{brandID:brandFilter} | filter:{showroomID:showroomFilter} | filter:{categoryID:categoryFilter} track by p.id " item-width="50% " item-height="214px " ng-click="openProduct(p) ">
+                <div class="product-item ">
+                    <iid-favorite item-id="{{:: p.id}} " ng-show="loggedIn "></iid-favorite>
+                    <ng-image source="{{:: p.thumbnail}} " class="full-image "></ng-image>
+                    <div class="iid-item-data ">
+                        <div class="iid-item-data-title ">{{:: p.post_title}}</div>
+                        <div class="iid-item-data-desc ">{{:: p.brand.post_title}}</div>
                     </div>
                 </div>
             </div>
