@@ -33,8 +33,8 @@ angular.module('imageID', ['ionic', 'imageID.controllers', 'imageID.utils', 'ima
 })
 
 // Prod
-.constant('WORDPRESS_API_URL', 'http://inerdeg.com/imageID/api/')
-    .constant('WORDPRESS_REST_BASE_URL', 'http://inerdeg.com/imageID/wp-json/wp/v2/imageid')
+.constant('WORDPRESS_API_URL', 'http://isupsaas.com/imageID/api/')
+    .constant('WORDPRESS_REST_BASE_URL', 'http://isupsaas.com/imageID/wp-json/wp/v2/imageid')
 
 // Testing
 // .constant('WORDPRESS_API_URL', 'http://mounir.io/imageid1/api/')
@@ -57,6 +57,7 @@ angular.module('imageID', ['ionic', 'imageID.controllers', 'imageID.utils', 'ima
             'http://*.mounir.io/**',
 
             'http://*.inerdeg.com/**',
+            'http://*.isupsaas.com/**'
         ]);
 
         $stateProvider
