@@ -9,18 +9,23 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.location.LocationManager;
 import android.location.Location;
+import android.graphics.BitmapFactory;
+import 	android.graphics.Bitmap;
 
 import com.google.android.gcm.GCMBaseIntentService;
+import com.imageid.mobile.R;
 
 @SuppressLint("NewApi")
 public class GCMIntentService extends GCMBaseIntentService {
 
-	private static final String TAG = "GCMIntentService";
+	private static final String TAG = "IID_Notification_Service";
 	
 	public GCMIntentService() {
 		super("GCMIntentService");
@@ -63,48 +68,77 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 		// Extract the payload from the message
 		Bundle extras = intent.getExtras();
-		if (extras != null)
-		{
+		if (extras != null) {
+			for (String key : extras.keySet()) {
+				Object value = extras.get(key);
+				Log.d(TAG, String.format("Extras -->  %s %s (%s)", key, value.toString(), value.getClass().getName()));
+			}
+
+			String strTargetLocation = extras.getString("gcm.notification.location");
+			String targetLat = null;
+			String targetLng = null;
+			try {
+				JSONObject jo = new JSONObject(strTargetLocation);
+				targetLat = jo.getString("lat");
+				targetLng = jo.getString("lng");
+				Log.d(TAG, String.format("Target location -->  %s,%s", targetLat, targetLng));
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+
+			// Getting last location: 
+			Location lastLocation = null;
+			if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+	            LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+				lastLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);	
+				if (lastLocation == null){
+					lastLocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					Log.d(TAG, String.format("Last location -->  %s,%s", lastLocation.getLatitude() + "", lastLocation.getLongitude() + ""));
+				}
+	        }
+
 			// if we are in the foreground, just surface the payload, else post it to the statusbar
             if (PushPlugin.isInForeground()) {
 				extras.putBoolean("foreground", true);
-                PushPlugin.sendExtras(extras);
-			}
-			else {
+				if(isNear(lastLocation, targetLat, targetLng)) {
+	                PushPlugin.sendExtras(extras);
+	            }
+			} else {
 				extras.putBoolean("foreground", false);
 
-				for (String key : extras.keySet()) {
-					Object value = extras.get(key);
-					Log.d(TAG, String.format("%s %s (%s)", key, value.toString(), value.getClass().getName()));
+				if(isNear(lastLocation, targetLat, targetLng)) {
+					createNotification(context, extras);
 				}
-
-				LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-				Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-				if (l == null){
-					l = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-					if (l == null){	// Location is still null, I will display the notification any way!
-						processNotification(context, extras);
-						return;
-					}
-				}
-				
-				// Check if far from location?
-                processNotification(context, extras);
             }
         }
 	}
 
-	private void processNotification(Context context, Bundle extras){
-		if (extras.getString("gcm.notification.message") != null && extras.getString("gcm.notification.message").length() != 0) {
-            createNotification(context, extras);
-        }
+	private boolean isNear(Location lastLocation, String targetLat, String targetLng){
+		if (lastLocation == null) {
+			Log.w(TAG, "Can't get last location, I will display the notification anyway");
+			return true;
+		}
+
+		if (targetLat == null || targetLng == null) {
+			Log.w(TAG, "No target location, I will display the notification anyway");
+			return true;
+		}
+
+		// TODO Check if both locations are near..
+
+
+		return true;
 	}
 
-	public void createNotification(Context context, Bundle extras)
-	{
+	public void createNotification(Context context, Bundle extras) {
+		String message = extras.getString("gcm.notification.message");
+		if (message == null || message.length() < 1) {
+			Log.w(TAG, "Notification with empty message, ignoring it...");
+            return ;
+        }
+
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-		String appName = getAppName(this);
 
 		Intent notificationIntent = new Intent(this, PushHandlerActivity.class);
 		notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -120,53 +154,15 @@ public class GCMIntentService extends GCMBaseIntentService {
 			} catch (NumberFormatException e) {}
 		}
 
-		// .setSmallIcon(com.imageid.mobile.R.drawable.icon)
-		
 		NotificationCompat.Builder mBuilder =
 			new NotificationCompat.Builder(context)
-				.setDefaults(defaults)
-				.setSmallIcon(context.getApplicationInfo().icon)
-				.setWhen(System.currentTimeMillis())
-				.setContentTitle(extras.getString("title"))
-				.setTicker(extras.getString("title"))
-				.setContentIntent(contentIntent)
-				.setAutoCancel(true);
+				.setSmallIcon(R.drawable.notification_small)
+				.setContentTitle(context.getString(R.string.app_name))
+				.setContentText(message)
+				.setContentIntent(contentIntent);
 
-		String message = extras.getString("gcm.notification.message");
-		if (message != null) {
-			mBuilder.setContentText(message);
-		} else {
-			mBuilder.setContentText("<missing message content>");
-		}
-
-		String msgcnt = extras.getString("msgcnt");
-		if (msgcnt != null) {
-			mBuilder.setNumber(Integer.parseInt(msgcnt));
-		}
-		
 		int notId = 0;
-		
-		try {
-			notId = Integer.parseInt(extras.getString("notId"));
-		}
-		catch(NumberFormatException e) {
-			Log.e(TAG, "Number format exception - Error parsing Notification ID: " + e.getMessage());
-		}
-		catch(Exception e) {
-			Log.e(TAG, "Number format exception - Error parsing Notification ID" + e.getMessage());
-		}
-		
-		mNotificationManager.notify((String) appName, notId, mBuilder.build());
-	}
-	
-	private static String getAppName(Context context)
-	{
-		CharSequence appName = 
-				context
-					.getPackageManager()
-					.getApplicationLabel(context.getApplicationInfo());
-		
-		return (String)appName;
+		mNotificationManager.notify(context.getString(R.string.app_name), notId, mBuilder.build());
 	}
 	
 	@Override
