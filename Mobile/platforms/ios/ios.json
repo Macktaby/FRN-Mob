@@ -9,11 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         },
                         {
@@ -21,11 +21,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
+                            "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -34,41 +34,41 @@
         }
     },
     "installed_plugins": {
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.imageid.mobile"
+        },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.imageid.mobile"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.imageid.mobile"
-        },
-        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.imageid.mobile"
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.imageid.mobile"
         },
-        "ionic-plugin-keyboard": {
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.imageid.mobile"
         },
-        "com.phonegap.plugins.PushPlugin": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.imageid.mobile"
+        },
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.imageid.mobile"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
+            "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+            "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+            "pluginId": "com.phonegap.plugins.PushPlugin",
+            "clobbers": [
+                "PushNotification"
+            ]
+        },
+        {
             "file": "plugins/cordova-plugin-device/www/device.js",
             "id": "cordova-plugin-device.device",
             "pluginId": "cordova-plugin-device",
             "clobbers": [
                 "device"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-            "id": "cordova-plugin-splashscreen.SplashScreen",
-            "pluginId": "cordova-plugin-splashscreen",
-            "clobbers": [
-                "navigator.splashscreen"
             ]
         },
         {
@@ -81,6 +81,14 @@
             ]
         },
         {
+            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+            "id": "cordova-plugin-splashscreen.SplashScreen",
+            "pluginId": "cordova-plugin-splashscreen",
+            "clobbers": [
+                "navigator.splashscreen"
+            ]
+        },
+        {
             "file": "plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
             "id": "ionic-plugin-keyboard.keyboard",
             "pluginId": "ionic-plugin-keyboard",
@@ -88,22 +96,14 @@
                 "cordova.plugins.Keyboard"
             ],
             "runs": true
-        },
-        {
-            "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
-            "id": "com.phonegap.plugins.PushPlugin.PushNotification",
-            "pluginId": "com.phonegap.plugins.PushPlugin",
-            "clobbers": [
-                "PushNotification"
-            ]
         }
     ],
     "plugin_metadata": {
+        "com.phonegap.plugins.PushPlugin": "2.5.0",
         "cordova-plugin-device": "1.1.2",
-        "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-splashscreen": "3.2.2",
         "cordova-plugin-inappbrowser": "1.4.0",
-        "ionic-plugin-keyboard": "2.0.1",
-        "com.phonegap.plugins.PushPlugin": "2.5.0"
+        "cordova-plugin-splashscreen": "3.2.2",
+        "cordova-plugin-whitelist": "1.2.2",
+        "ionic-plugin-keyboard": "2.0.1"
     }
 }
