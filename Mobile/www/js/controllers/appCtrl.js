@@ -132,6 +132,12 @@ angular.module('imageID.controllers', [])
         }
 
         $scope.getProfile = function() {
+            navigator.geolocation.getCurrentPosition(function(res) {
+                console.log("Got current position", res);
+            }, function(err) {
+                console.log("Error getting current position", res);
+            }, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+
             var userID = AuthService.getUser().data.id;
             Restangular.all("user/" + userID + "/actions").getList().then(function(actions) {
                 $scope.$root.favorties = [];

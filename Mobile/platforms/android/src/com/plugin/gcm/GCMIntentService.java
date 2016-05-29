@@ -126,9 +126,26 @@ public class GCMIntentService extends GCMBaseIntentService {
 		}
 
 		// TODO Check if both locations are near..
+		boolean res = true;
+		try {
+			Location targetLocation = new Location("");
+			targetLocation.setLatitude(Double.parseDouble(targetLat));
+			targetLocation.setLongitude(Double.parseDouble(targetLng));
+
+			float distance = targetLocation.distanceTo(lastLocation);
+			if(distance < 3000) {
+				res = true;
+				Log.d(TAG, "Notification is in range");
+			} else {
+				res = false;
+				Log.w(TAG, "Notification is NOT in range");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 
-		return true;
+		return res;
 	}
 
 	public void createNotification(Context context, Bundle extras) {

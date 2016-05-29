@@ -1,2 +1,4 @@
 Project.sublime-workspace
-Mobile/platforms/android/.gradle
+.gradle
+*.xcuserdatad
+*.xcworkspacedata
